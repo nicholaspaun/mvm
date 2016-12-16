@@ -258,10 +258,7 @@ class Interp:
 
         if name == 'LW':
             self.regs.set(reg,self.mem.get(addr,4))
-            #self.mem.debug(addr,4)
-
         elif name == 'SW':
-            #print reg, self.regs.get(reg)
             self.mem.set(addr,4,self.regs.get(reg))
 
         self.pcinc()
@@ -271,7 +268,6 @@ class Interp:
         self.mem.rom(0,code)
 
     def execute(self,args):
-        #print args
         inst = args[0]
         self.cmds[inst](*args)
 
@@ -279,7 +275,6 @@ class Interp:
         while True:
             pc = self.regs.get('pc')
             inst = self.mem.rawget(pc)
-            #print inst
             ij = []
             for e in inst:
                 ij.append(str(e))
@@ -297,7 +292,6 @@ cpu = Interp()
 import json
 
 f = open(sys.argv[1]).read()
-#print f
 f = json.loads(f)
 
 cpu.loader(f)
