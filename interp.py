@@ -16,6 +16,7 @@ class Interp:
                 'ANDI': self.addi, 'ORI': self.addi, 'XORI': self.addi,
                 'LI': self.li, 'MOVE': self.move,
                 'SLT': self.slt, 'SLTU': self.slt,
+                'SLTI': self.slti, 'SLTIU': self.slti,
                 'SLL': self.sll, 'SRL': self.sll,
                 'J': self.j,
                 'JAL': self.jal,
@@ -105,6 +106,11 @@ class Interp:
             val = 0
 
         self.regs.set(d,val)
+        self.pcinc()
+
+    def slti(self,name,d,a,imm):
+        aval = self.regs.get(a)
+        self.regs.set(d,int(aval < imm))
         self.pcinc()
 
     def sll(self,name,d,s,i):
