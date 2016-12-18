@@ -54,8 +54,8 @@ class Registers:
     def display(self):
         print "\033[34m"
         for i in range(0,32):
-            print "%d\t$%2s\t\t%d" % (i,self.number.map[i],self.regs[i])
+            print "%2d\t$%2s\t%10d" % (i,self.number.map[i],self.regs[i])
 
         for i in range(0,3):
-            print "%d\t %2s\t\t%d" % (i + 32, self.number.special[i],self.regs[i + 32])
+            print "%2d\t %2s\t%10d" % (i + 32, self.number.special[i],self.regs[i + 32])
         print "\033[0m\n"
