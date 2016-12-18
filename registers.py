@@ -41,9 +41,7 @@ class Registers:
         reg = self.number(reg)
         if reg > 31 and not special:
             raise Exception(MVMErr.reg_forbidden,reg)
-
-
-        if reg == 0:
+        elif reg == 0:
             raise TypeError(MVMErr.reg_ro,reg)
         else:
             self.regs[reg] = val
