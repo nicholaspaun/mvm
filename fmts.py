@@ -20,8 +20,6 @@ class Instruction (ctypes.Union):
 
 test = Instruction()
 
-f = open('data')
+test.asInt = 0x03000011
 
-while f:
-    test.asInt = struct.unpack(">I",f.read(4))[0]
-    print test.op,test.rs,test.rt,test.rd,test.shamt,test.funct
+print test.op,test.rs,test.rt,test.rd,test.shamt,test.funct
